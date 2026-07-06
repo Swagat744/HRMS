@@ -1,3 +1,6 @@
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green?logo=node.js)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange?logo=mysql)
 # HRMS - Human Resource Management System
 
 A modern Full Stack Human Resource Management System (HRMS) built using React, Node.js, Express, MySQL, and Tailwind CSS.

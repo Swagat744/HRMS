@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   HRMS Theme System
+   ========================================================= */
+
+@layer base {
+  :root {
+    --background: 248 250 249;
+    --foreground: 32 39 38;
+
+    --surface: 255 255 255;
+
+    --card: 255 255 255;
+    --card-foreground: 32 39 38;
+
+    --border: 225 231 229;
+
+    --muted: 240 243 242;
+    --muted-foreground: 100 117 115;
+
+    --input: 255 255 255;
+    --ring: 1 135 144;
+  }
+
+  .dark {
+    --background: 43 39 38;
+    --foreground: 245 247 246;
+
+    --surface: 53 49 48;
+
+    --card: 53 49 48;
+    --card-foreground: 245 247 246;
+
+    --border: 77 73 72;
+
+    --muted: 63 59 58;
+    --muted-foreground: 176 180 178;
+
+    --input: 63 59 58;
+    --ring: 247 119 84;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--border)) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgb(var(--border));
+    border-radius: 999px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html {
+    transition: color .25s ease, background-color .25s ease;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    color: rgb(var(--foreground));
+    background-color: rgb(var(--background));
+
+    background-image:
+      radial-gradient(circle at 8% 8%, rgba(1, 135, 144, .06), transparent 32%),
+      radial-gradient(circle at 92% 18%, rgba(247, 119, 84, .06), transparent 32%),
+      radial-gradient(circle at 50% 100%, rgba(10, 81, 109, .05), transparent 40%);
+
+    background-attachment: fixed;
+    transition:
+      background-color .3s ease,
+      color .3s ease;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(1, 135, 144, .12), transparent 30%),
+      radial-gradient(circle at 90% 20%, rgba(247, 119, 84, .10), transparent 28%),
+      radial-gradient(circle at 50% 100%, rgba(10, 81, 109, .12), transparent 35%);
+  }
+
+  ::selection {
+    background: rgba(247, 119, 84, .25);
+  }
+}
+
+@layer components {
+
+  .card {
+    @apply rounded-2xl shadow-card border;
+    background: rgb(var(--card));
+    color: rgb(var(--card-foreground));
+    border-color: rgb(var(--border));
+    transition: all .25s ease;
+  }
+
+  .glass {
+    @apply backdrop-blur-xl shadow-glass;
+    background: rgb(var(--card) / .72);
+    border: 1px solid rgb(var(--border) / .6);
+  }
+
+  .glass-card {
+    @apply rounded-3xl backdrop-blur-2xl shadow-glass;
+    background: rgb(var(--card) / .82);
+    border: 1px solid rgb(var(--border) / .55);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98];
+  }
+
+  .btn-primary {
+    @apply btn text-white shadow-glow;
+    background: linear-gradient(135deg, #018790, #0A516D);
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.08);
+  }
+
+  .btn-accent {
+    @apply btn text-white;
+    background: linear-gradient(135deg, #F77754, #E85F3A);
+  }
+
+  .btn-secondary {
+    @apply btn border;
+    background: rgb(var(--card));
+    color: rgb(var(--foreground));
+    border-color: rgb(var(--border));
+  }
+
+  .btn-secondary:hover {
+    background: rgb(var(--muted));
+  }
+
+  .btn-danger {
+    @apply btn bg-danger-500 hover:bg-danger-600 text-white;
+  }
+
+  .btn-ghost {
+    @apply btn;
+    color: rgb(var(--foreground));
+  }
+
+  .btn-ghost:hover {
+    background: rgb(var(--muted));
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border px-3.5 py-2.5 text-sm transition-all outline-none;
+    background: rgb(var(--input));
+    color: rgb(var(--foreground));
+    border-color: rgb(var(--border));
+  }
+
+  .input-field::placeholder {
+    color: rgb(var(--muted-foreground));
+  }
+
+  .input-field:focus {
+    border-color: rgb(var(--ring));
+    box-shadow: 0 0 0 4px rgba(1, 135, 144, .12);
+  }
+
+  .label {
+    @apply block text-xs font-semibold uppercase tracking-wide mb-1.5;
+    color: rgb(var(--muted-foreground));
+  }
+
+  .section-title {
+    @apply text-lg font-semibold;
+    color: rgb(var(--foreground));
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all;
+    color: rgb(var(--muted-foreground));
+  }
+
+  .nav-link:hover {
+    background: rgb(var(--muted));
+    color: rgb(var(--foreground));
+  }
+
+  .nav-link-active {
+    @apply text-primary-700;
+    background: rgba(1, 135, 144, .12);
+  }
+
+  .orb {
+    @apply absolute rounded-full blur-3xl pointer-events-none;
+  }
+}
+
+*,
+*::before,
+*::after,
+button,
+input,
+textarea,
+select,
+svg,
+a {
+  transition:
+    background-color .25s ease,
+    border-color .25s ease,
+    color .25s ease,
+    fill .25s ease,
+    stroke .25s ease,
+    box-shadow .25s ease;
+}

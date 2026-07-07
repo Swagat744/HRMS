@@ -202,23 +202,6 @@ server/config/db.js
 
 ---
 
-## Screenshots
-
-You can add screenshots here.
-
-Example:
-
-- Login Page
-- Admin Dashboard
-- Employee Dashboard
-- Attendance
-- Employee Directory
-- Payroll
-- Employee Profile
-- Dark Theme
-
----
-
 ## Future Improvements
 
 - Resume Editing
